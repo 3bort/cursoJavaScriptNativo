@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios</title>
+</head>
+<body>
+    <h1>Ejercicios</h1>
+    
+</body>
+
+<script>
+/*  
+    1) Programa una función que cuente el número de caracteres de una 
+    cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+
+    2) Programa una función que te devuelva el texto recortado según 
+    el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
+    
+    3) Programa una función que dada una String te devuelva un Array de 
+    textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') 
+    devolverá ['hola', 'que', 'tal'].
+
+    4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) 
+    devolverá Hola Mundo Hola Mundo Hola Mundo.
+*/
+
+// Ejercicio 1
+
+function miFuncion(cadena) {
+    if(isNaN(cadena)){
+        console.log("La cadena tiene", cadena.length, "caracteres");   
+    }
+    else{
+        console.log("No es una cadena")
+    }
+}
+miFuncion("hola que tal");
+
+
+
+
+// Solución curso
+
+function contarCaracteres(cadena = ""){
+    if(!cadena){
+        console.warn("No has puesto ninguna cadena");
+    }else{
+        console.info(`La cadena "${cadena}" tiene ${cadena.length} carateres`);
+    }
+}
+
+contarCaracteres("Hola");
+
+
+
+
+const contarCaracteres2 = (cadena = "") =>
+(!cadena) 
+? console.warn("No has puesto ninguna cadena")
+: console.info(`La cadena "${cadena}" tiene ${cadena.length} carateres`);
+
+contarCaracteres2("Hola");
+
+
+
+
+
+// Ejercicio 2
+
+function miFuncion2(cadena, num){
+    if(isNaN(cadena) && !isNaN(num)){
+        for (let i = 0; i < num; i++) {
+            console.log(cadena.slice(0, num));   
+        }
+    }
+    else{
+        console.log("Alguno de los dos parametros no es correcto")
+    }
+}
+
+miFuncion2("Hola Mundo", 7);
+
+// Solucion Curso
+
+const recortarTexto = (cadena = "", longitud = undefined) =>
+(!cadena)
+? console.warn("No hay texto")
+: (longitud === undefined)
+? console.warn("No pusiste longitud")
+: console.info(cadena.slice(0,longitud))
+
+recortarTexto("Hola Mundo", 3);
+
+
+
+
+//Ejercicio 3
+
+function miFuncion3(cadena = "", caracter ="") {
+    let arr = [];
+    let palabra = "";
+    let contador = 0;
+    for (let i = 0; i < cadena.length; i++) {
+        if(cadena[i] != caracter){
+            palabra = palabra + cadena[i];
+        }
+        else{
+            arr.push(palabra);
+            palabra = "";
+        }
+        
+    }
+    arr.push(palabra);
+    console.log(arr);
+      
+}
+
+miFuncion3("Hola que tal", " ");
+
+// Solucion Curso
+
+const cadenaAArray = (cadena = "", separador = undefined) =>
+(!cadena)
+? console.warn("No hay texto")
+: (separador === undefined)
+? console.warn("No pusiste separador")
+: console.info(cadena.split(separador))
+
+cadenaAArray("Hola que tal", " ")
+
+
+
+// Ejercicio 4
+
+function miFuncion4(cadena = "", rep) {
+    let arr = [];
+    for (let i = 0; i < rep; i++) {
+        arr.push(cadena);    
+    }
+    console.log(arr);
+}
+
+miFuncion4("Hola mundo", 7);
+
+// Solucion Curso
+
+const repetirTexto = (texto = "", veces = undefined) => {
+if(!texto) return console.warn("No hay texto");
+if(veces === undefined) return console.warn("No hay numero de veces");
+if(veces === 0) return console.error("No puede ser 0");
+if(Math.sign(veces) === -1) return console.error("El número no puede ser negativo");
+for(let i = 1; i <= veces; i++){
+    console.info(texto,i)
+}
+}
+repetirTexto("Hola mundo", 5)
+
+console.clear();
+
+/* 
+
+5) Programa una función que invierta las palabras de una cadena de texto, 
+pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+6) Programa una función para contar el número de veces que se repite una 
+palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") 
+devolverá 2.
+7) Programa una función que valide si una palabra o frase dada, es un 
+palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") 
+devolverá true.
+8) Programa una función que elimine cierto patrón de caracteres de un 
+texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") 
+devolverá  "1, 2, 3, 4 y 5.
+
+*/
+
+
+//Ejercicio 5
+
+function invertir(cadena = "") {
+    let invertida = "";
+    for (let i = 0; i < cadena.length; i++) {
+        invertida = cadena[i] + invertida;
+    }
+    console.log(invertida);
+    
+}
+
+const invertir2 = (cadena = "") => {
+    if(!cadena) return console.warn("No hay texto");
+    let invertida2 = "";
+    for (let i = 0; i < cadena.length; i++) {
+        invertida2 = cadena[i] + invertida2;
+    }
+    console.log(invertida2)
+}
+
+invertir("Alistate en la marina")
+invertir2("Alistate en la marina")
+
+//Solución curso
+
+const invertirCadena = (cadena = "") =>
+(cadena.warn)
+? console.warn("No has introducido valor")
+:(console.info(cadena.split("").reverse().join("")));
+
+
+invertirCadena("Alistate")
+
+
+//Ejercicio 6
+
+function vecesRepetido(cadena = "", esta = ""){
+    let contador = 0;
+    let palabra = "";
+    let arr = [];
+    for (let i = 0; i < cadena.length; i++) {
+        if(cadena[i] != " "){
+            palabra = palabra + cadena[i];
+        }else{
+            arr.push(palabra);
+            palabra = "";
+        }
+             
+    }
+    arr.push(palabra);
+
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[i] == esta){
+            contador++;
+        }
+        
+    }
+    console.log(contador);
+
+}
+
+vecesRepetido("hola caracola", "hola");
+
+//Solución curso
+
+const textoEnCadena = (cadena = "", texto = "") =>{
+    if(!cadena) return console.warn("No hay texto largo");
+    if(!texto) return console.warn("No palabra a evaluar");
+
+    let i = 0,
+    contador = 0;
+
+    while(i !== -1){ //Indexof devuelve -1 si no lo encuentra
+        i = cadena.indexOf(texto,i);
+        if(i !== -1){
+            i++;
+            contador++;
+        }
+    }
+    return console.info("La palabra texto se repite",contador);
+
+}
+
+textoEnCadena("hola caracola", "hola");
+
+
+
+
+//Ejercicio 7
+
+function palindromo(cadena = "") {
+    let esPalindromo = false;
+    let mitad = Math.floor(cadena.length/2);
+
+    for (let i = 0; i < mitad; i++) {
+        if(cadena[cadena.length-i-1] === cadena[i]){
+           esPalindromo = true;
+        }
+    }
+    console.log(esPalindromo);  
+}
+
+palindromo("asalasa")
+
+
+// Solución curso
+
+const palindromo2 = (palabra = "") =>{
+    if(!palabra) return console.warn("No hay texto largo");
+    palabra = palabra.toLowerCase();
+    let alReves = palabra.split("").reverse().join("");
+
+    return (palabra === alReves)
+    ? console.info("Si es palindromo")
+    : console.info("No es palindromo");
+
+}
+
+palindromo2("asalasa")
+
+
+//Ejercicio 8
+
+function eliminarPatron(cadena = "", patron = "") {
+    let sinPatron = "";
+    for (let i = 0; i < cadena.length; i++) {
+        console.log("I",i)
+        for (let j = 0; j < patron.length; j++) {
+            console.log("J",j);
+            if(cadena[i] === patron[j]){
+                sinPatron = sinPatron + cadena[i];
+                console.log("Es true")
+            }
+            
+        }
+        
+    }
+    console.log(sinPatron);
+}
+
+//eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "222")
+
+
+//Solución curso
+
+const eliminarCaracteres = (texto = "", patron = "") =>
+(!texto)
+? console.warn("No has metido texto")
+:(!patron)
+? console.warn("No has metido patron")
+: console.info(texto.replace(new RegExp(patron, "ig"),"")) //i detectaba mayus y minus y g todas las coincidencias y no remplaces por nadad ""
+
+eliminarCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+
+console.clear();
+
+/*
+
+9) Programa una función que obtenga un numero aleatorio entre 501 y 600.
+10) Programa una función que reciba un número y evalúe si es capicúa o no 
+(que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.
+11) Programa una función que calcule el factorial de un número 
+(El factorial de un entero positivo n, se define como el producto 
+de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) 
+devolverá 120.
+
+*/
+
+
+//Ejercicio 9
+
+const aleatorio = () =>
+console.log("El número aleatorio es: ", Math.round(Math.random() * (601 - 501) + 501));
+aleatorio();
+
+//Ejercicio 10
+
+const capicua = (num = undefined) =>
+(isNaN(num))
+? console.log("No es un numero")
+: (num.toString() !== num.toString().split("").reverse().join(""))
+? console.log("No es capicua", false)
+: console.log("Es capicua", true)
+
+capicua(1512151)
+
+
+//Ejercicio 11
+
+function factorial(num = undefined) {
+    if(isNaN(num)){
+        return console.warn("No es un numero")
+    }
+    if(num === 0){
+        return console.warn("No puede ser 0")
+    }
+
+    if(Math.sign(num) === -1){
+        return console.warn("No puede ser un número negativo")
+    }
+    else{
+        let factorial = 1;
+        for (let i = 1; i < num + 1; i++) {
+            factorial = factorial * i;
+            
+        }
+        console.log(`El factorial de ${num} es ${factorial}`)
+    }
+    
+}
+factorial(8);
+
+console.clear();
+
+/*
+12) Programa una función que determine si un número es primo 
+(aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) 
+devolverá true.
+13) Programa una función que determine si un número es par o impar, 
+pe. miFuncion(29) devolverá Impar.
+14) Programa una función para convertir grados Celsius a Fahrenheit y 
+viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+*/
+
+//Ejercicio 12
+
+const numeroPrimo = (numero = undefined) =>{
+    if(numero === undefined) return console.warn("No has metido nada");
+    if(typeof numero!== "number") return console.warn("No has metido un numero");
+    if(numero === 0) return console.warn("No puede ser 0");
+    if(numero === 1) return console.warn("No puede ser 1");
+    if(Math.sign(numero === -1)) return console.log("No puede ser negativo");
+
+    let divisible = false;
+    for(let i = 2; i < numero; i++){
+        if((numero%i) === 0){
+            divisible = true;
+            break
+        }
+
+    }
+    return (divisible)
+    ? console.log("El número no es primo")
+    : console.log("El numero si es primo")
+
+}
+
+numeroPrimo(7);
+
+//Ejercicio 13
+
+const esPar = (num = undefined) =>
+(isNaN(num))
+? console.log("No es un numero")
+: ((num%2) === 0)
+? console.log("Es Par")
+: console.log("Es Impar")
+
+esPar(5);
+
+//Ejercicio 14
+
+
+
+
+
+/*
+15) Programa una función para convertir números de base binaria a decimal 
+y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+16) Programa una función que devuelva el monto final después de 
+aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) 
+devolverá 800.
+17) Programa una función que dada una fecha válida determine 
+cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) 
+devolverá 35 años (en 2020).
+*/
+
+
+
+</script>
+</html>
